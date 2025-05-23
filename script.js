@@ -481,7 +481,6 @@ function updatePaginationControls(totalProducts) {
 function renderPaginationControls() {
       totalPages = Math.ceil(currentDisplayedProducts.length / itemsPerPage);
       pageInfoSpan.textContent = `Page ${currentPage} of ${totalPages}`;
-
       prevPageBtn.disabled = currentPage === 1;
       nextPageBtn.disabled = currentPage === totalPages || totalPages === 0; // Disable next if on last page or no products
   }

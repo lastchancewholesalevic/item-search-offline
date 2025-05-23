@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Item Search - Good & Great Deals</title>
+  <link rel="stylesheet" href="style.css">
+
+  </head>
+
+<body>
+  <div class="container">
+
+    <h1 id="page-header">Item Search - Good & Great Deals</h1>
+
+    <div class="search-section">
+      <input type="text" id="item-id" placeholder="Search by Item ID">
+      <input type="text" id="item-name" placeholder="Search by Name/Description">
+      <button id="search-btn">Search</button>
+      <button id="refresh-btn">Refresh</button>
+    </div>
+
+    <p id="product-count">Displayed Products: 0</p>
+
+    <p id="loading-indicator" class="hidden">Loading...</p>
+
+    <div id="product-details-overlay" class="hidden">
+        <div class="product-details-modal">
+            <button class="close-btn">&times;</button>
+            <h2>Product Details</h2>
+            <div class="details-grid">
+                <div class="col-1">
+                    
+                     <div class="detail-column detail-column-full">
+                        <span class="detail-label">Product Description:</span>
+                        <span class="detail-value" id="detail-description"></span>
+                    </div>
+
+                    <div class="detail-column">
+                        <span class="detail-label">Item Number:</span>
+                        <span class="detail-value" id="detail-item-number"></span>
+                    </div>
+
+                    <div class="detail-column">
+                      <span class="detail-label">Great Deal Cost (Default Cost):</span>
+                      <span class="detail-value" id="detail-great-deal-cost"></span>
+                  </div>
+
+                    <div class="detail-column">
+                      <span class="detail-label">Salvage Cost %:</span>
+                      <span class="detail-value" id="detail-salvage-cost-percent"></span>
+                  </div>
+
+                  <div class="detail-column">
+                      <span class="detail-label">Costco Price (MSRP):</span>
+                      <span class="detail-value" id="detail-costco-price"></span>
+                  </div>
+
+                  <div class="detail-column detail-column-full">
+                    <span class="detail-label">Comments:</span>
+                    <span class="detail-value" id="detail-comments"></span>
+                  </div>
+
+                </div>
+
+                <div class="col-2">
+                    
+                    <div class="detail-column detail-column-full">
+                      <span class="detail-header">Prices:</span>
+                      <span ></span>
+                   </div>
+
+                    <div class="detail-column">
+                        <span class="detail-label">10% LEGOS:</span>
+                        <span class="detail-value" id="detail-category-10"></span>
+                    </div>
+
+                     <div class="detail-column">
+                        <span class="detail-label">15% JANITORIAL:</span>
+                        <span class="detail-value" id="detail-category-15"></span>
+                    </div>
+
+                     <div class="detail-column">
+                        <span class="detail-label">20% FOOD:</span>
+                        <span class="detail-value" id="detail-category-20"></span>
+                    </div>
+
+                     <div class="detail-column">
+                        <span class="detail-label">25% OTHER ITEMS:</span>
+                        <span class="detail-value" id="detail-category-25"></span>
+                    </div>
+
+                     <div class="detail-column">
+                        <span class="detail-label">30% SHOES:</span>
+                        <span class="detail-value" id="detail-category-30"></span>
+                    </div>
+
+                     <div class="detail-column">
+                        <span class="detail-label">40% CLOTHING:</span>
+                        <span class="detail-value" id="detail-category-40"></span>
+                    </div>
+
+                     <div class="detail-column">
+                        <span class="detail-label">50% BOOKS:</span>
+                        <span class="detail-value" id="detail-category-50"></span>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+
+    <ul id="product-list">
+      </ul>
+
+    <div id="pagination-controls" class="pagination-controls hidden">
+        <button id="prev-page-btn">Previous</button>
+        <span id="page-info">Page 1 of 1</span>
+        <button id="next-page-btn">Next</button>
+    </div>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>

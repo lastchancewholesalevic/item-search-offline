@@ -1,0 +1,551 @@
+body {
+  font-family: sans-serif; /* Nicer default font */
+  line-height: 1.6;
+  background-color: #f4f4f4; /* Light background */
+  margin: 0;
+  padding: 0; /* Remove body padding as container will handle it */
+  display: flex; /* Use flexbox for body to center container */
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh; /* Ensure body takes at least full viewport height */
+  box-sizing: border-box;
+}
+
+.container {
+  width: 100%; /* Ensure it takes the full width of its parent (body) */
+  /* REMOVED max-width here to allow full width by default */
+  margin: 20px auto; /* Center the container and add vertical margin */
+  padding: 30px; /* More padding inside the container */
+  background-color: #fff; /* White background for the container */
+  border: 1px solid #ddd; /* Lighter border */
+  border-radius: 8px; /* More rounded corners */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  padding-bottom: 80px; /* Adjust based on the height of your pagination footer */
+  box-sizing: border-box;
+  position: relative; /* Needed for absolute positioning of potential future elements */
+}
+
+h1 {
+  text-align: center;
+  color: #333;
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+h2 {
+  color: #555;
+  margin-top: 0;
+  margin-bottom: 10px;
+  border-bottom: 2px solid #007bff;
+  padding-bottom: 5px;
+}
+
+/* Styling for the Search Section */
+.search-section {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap; /* Allows items to wrap to the next line on smaller screens */
+  margin-bottom: 20px;
+  align-items: center; /* Vertically align items in the flex container */
+}
+
+.search-section input[type="text"] {
+  flex-grow: 1; /* Allows inputs to grow and take available space */
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+  box-sizing: border-box;
+  min-width: 150px; /* Ensure inputs have a minimum width */
+}
+
+.search-section button {
+  padding: 10px 18px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.2s ease;
+  box-sizing: border-box;
+  flex-shrink: 0; /* Prevent buttons from shrinking */
+}
+
+#search-btn {
+  background-color: #007bff;
+  color: white;
+}
+
+#search-btn:hover {
+  background-color: #0056b3;
+}
+
+#refresh-btn {
+  background-color: #6c757d;
+  color: white;
+}
+
+#refresh-btn:hover {
+  background-color: #5a6268;
+}
+
+/* Styling for the Add Product Section (can be hidden if needed) */
+.add-product-section {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+  padding-top: 15px;
+  border-top: 1px solid #eee;
+}
+
+.add-product-section input[type="text"] {
+  flex-grow: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+#add-btn {
+  background-color: #28a745;
+  color: white;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.2s ease;
+  box-sizing: border-box;
+}
+
+#add-btn:hover {
+  background-color: #218838;
+}
+
+
+/* Styling for the Product List */
+#product-list {
+  list-style-type: none;
+  padding: 0;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-top: 0;
+  max-height: 400px; /* Set a max height for the list */
+  overflow-y: auto; /* Add vertical scroll when content exceeds max-height */
+  margin-bottom: 20px; /* Add space below the list */
+}
+
+/* Style for individual product items */
+.product {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 15px;
+  border-bottom: 1px solid #eee;
+  background-color: #fff;
+  flex-wrap: wrap; /* Allows items inside product list to wrap */
+  gap: 10px; /* Gap between items in the list */
+  cursor: pointer; /* Indicate clickable items */
+  transition: background-color 0.2s ease; /* Hover effect */
+}
+
+.product:last-child {
+  border-bottom: none;
+}
+
+.product:hover {
+    background-color: #f0f0f0; /* Light grey on hover */
+}
+
+/* Style for individual product details within the list item */
+.product span {
+  word-break: break-word;
+  /* Allow items to take necessary width, but prevent excessive growth */
+  flex-basis: auto;
+}
+
+.product-item-number {
+    font-weight: bold;
+    color: #007bff;
+    flex-shrink: 0;
+    margin-right: 10px; /* Add space after item number */
+} 
+
+.product-description {
+  flex-grow: 1; /* Allow description to take up remaining space */
+  min-width: 150px; /* Minimum width for description before wrapping */
+  margin-right: 10px; /* Add space after description */
+}
+
+.product-price,
+.product-great-deals-price { /* Include other numeric/short items */
+  font-weight: bold;
+  color: #007bff;
+  flex-shrink: 0;
+   /* Use margin-left for spacing and alignment, flex-basis ensures they don't take unnecessary space */
+  margin-left: 10px;
+}
+
+.product-great-deals-price {
+    color: #28a745; /* Highlight great deal price */
+    margin-left: 10px; /* Space between prices */
+}
+
+
+.delete-btn {
+  padding: 8px 12px;
+  border: none;
+  background-color: #dc3545;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  flex-shrink: 0;
+}
+
+.delete-btn:hover {
+  background-color: #c82333;
+}
+
+/* Style for when no products are found */
+#product-list p {
+  text-align: center;
+  padding: 20px;
+  color: #666;
+}
+
+/* Styling for the product count element */
+#product-count {
+  text-align: center;
+  font-weight: bold;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  color: #555;
+}
+
+/* Styling for the loading indicator */
+#loading-indicator {
+  text-align: center;
+  font-style: italic;
+  color: #888;
+  margin: 20px 0;
+}
+
+/* Class to hide elements */
+.hidden {
+  display: none;
+}
+
+/* Styles for Product Details Overlay and Modal */
+#product-details-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  backdrop-filter: blur(5px);
+  padding: 10px; /* Add some padding to the overlay */
+  box-sizing: border-box;
+}
+
+.product-details-modal {
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  max-width: 800px; /* Max width for the modal */
+  width: 100%; /* Make modal take full width on smaller screens */
+  position: relative;
+  max-height: 95vh; /* Allow modal to take up more vertical space */
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+
+.product-details-modal h2 {
+  margin-top: 0;
+  border-bottom: 2px solid #007bff;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+
+.product-details-modal .close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #888;
+  z-index: 1010; /* Ensure close button is above content */
+}
+
+.product-details-modal .close-btn:hover {
+  color: #555;
+}
+
+/* Updated grid layout for details - using grid for better control */
+.details-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive grid columns */
+  gap: 20px; /* Gap between grid items */
+}
+
+.col-1, .col-2 {
+    /* Remove grid display here, let the details-grid handle the layout */
+    display: block; /* Ensure they behave as blocks */
+}
+
+.detail-column {
+    display: flex; /* Use flexbox for label and value within a detail row */
+    justify-content: space-between; /* Space out label and value */
+    gap: 10px; /* Gap between label and value */
+    flex-wrap: wrap; /* Allow label and value to wrap */
+}
+
+
+.detail-label {
+  font-weight: bold;
+  color: #333;
+  flex-shrink: 0; /* Prevent label from shrinking */
+}
+
+.detail-header {
+  font-weight: bold;
+  color: #c60c0c;
+  flex-basis: 100%; /* Make header take full width */
+  margin-bottom: 5px; /* Space below header */
+}
+
+
+.detail-value {
+  color: #555;
+  text-align: right; /* Align value to the right */
+  flex-grow: 1; /* Allow value to grow and take space */
+  word-break: break-word;
+}
+
+/* Style for detail columns that should span across all columns within their parent (details-grid) */
+.detail-column-full {
+    grid-column: span full-grid-area / span full-grid-area; /* Span across the grid */
+}
+
+.detail-column-full .detail-value {
+    text-align: left; /* Align full-width values to the left */
+}
+
+
+/* Specific styling for certain values if needed */
+#detail-great-deal-cost,
+#detail-costco-price {
+  color: #007bff;
+  font-weight: normal;
+}
+
+#detail-salvage-cost-percent {
+   color: #dc3545;
+   font-weight: normal;
+}
+
+#detail-comments {
+  font-style: italic;
+  color: #666;
+}
+
+/* Optional: Hide the add product section if not needed on this search page */
+/* .add-product-section {
+  display: none;
+} */
+
+/* --- Pagination Styles --- */
+#pagination-controls {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #f8f9fa;
+    padding: 15px 20px;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+    z-index: 999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    box-sizing: border-box;
+    flex-wrap: wrap; /* Allow controls to wrap on smaller screens */
+}
+
+.pagination-controls button {
+    padding: 8px 15px;
+    border: 1px solid #007bff;
+    border-radius: 4px;
+    background-color: #fff;
+    color: #007bff;
+    cursor: pointer;
+    transition: background-color 0.2s ease, opacity 0.2s ease;
+}
+
+.pagination-controls button:hover:not(:disabled) {
+    background-color: #e9ecef;
+}
+
+.pagination-controls button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+#page-info {
+    font-weight: bold;
+    color: #555;
+    flex-shrink: 0;
+}
+
+
+/* --- Media Queries for Responsiveness --- */
+
+/* Mobile devices (portrait and landscape) */
+@media (max-width: 767px) {
+    .container {
+        padding: 15px; /* Reduce container padding on smaller screens */
+        margin: 10px auto; /* Adjust margin */
+    }
+
+    h1 {
+        font-size: 1.8em; /* Adjust heading size */
+        margin-bottom: 15px;
+    }
+
+    .search-section {
+        flex-direction: column; /* Stack search inputs and buttons vertically */
+        gap: 10px;
+    }
+
+    .search-section input[type="text"],
+    .search-section button {
+        width: 100%; /* Make search elements full width */
+        min-width: unset; /* Remove minimum width constraint */
+    }
+
+    .product {
+        flex-direction: column; /* Stack product list items vertically */
+        align-items: flex-start; /* Align items to the start */
+        gap: 8px; /* Adjust gap */
+        padding: 10px 15px; /* Adjust padding */
+    }
+
+    .product span {
+        flex-basis: 100%; /* Make each span take full width when stacked */
+        text-align: left; /* Align text to the left */
+        margin: 0; /* Remove margins */
+    }
+
+    .product-item-number {
+         margin-bottom: 4px; /* Add space below item number */
+    }
+
+    .product-price,
+    .product-great-deals-price {
+         margin-top: 4px; /* Add space above prices */
+         margin-left: 0; /* Remove left margin */
+    }
+
+
+    .product-details-modal {
+        padding: 20px; /* Adjust modal padding */
+        max-height: 90vh; /* Adjust max height */
+    }
+
+    .details-grid {
+        grid-template-columns: 1fr; /* Stack detail columns in the modal */
+        gap: 15px; /* Adjust gap */
+    }
+
+    .detail-column {
+        flex-direction: column; /* Stack label and value within detail rows */
+        gap: 5px; /* Adjust gap */
+    }
+
+    .detail-value {
+        text-align: left; /* Align values to the left when stacked */
+    }
+
+    .detail-header {
+         margin-bottom: 0; /* Remove extra space below header when stacked */
+    }
+
+    #pagination-controls {
+        padding: 10px; /* Adjust pagination padding */
+        gap: 5px; /* Adjust gap */
+        justify-content: space-between; /* Space out controls */
+    }
+
+     #page-info {
+        flex-basis: 100%; /* Allow page info to take full width if wrapped */
+        text-align: center; /* Center page info */
+        margin-top: 5px; /* Add some space above page info */
+    }
+}
+
+/* Tablet devices */
+@media (min-width: 768px) and (max-width: 1024px) {
+    .container {
+        padding: 25px; /* Adjust container padding */
+    }
+
+    h1 {
+        font-size: 2em; /* Adjust heading size */
+    }
+
+    .search-section input[type="text"] {
+        min-width: 200px; /* Adjust minimum width for inputs */
+    }
+
+    .product {
+        gap: 15px; /* Adjust gap in product list */
+    }
+
+    .details-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Adjust grid columns for tablets */
+        gap: 25px; /* Adjust gap */
+    }
+
+    .product-details-modal {
+        max-width: 700px; /* Adjust modal max width for tablets */
+    }
+}
+
+/* Desktop devices and larger */
+@media (min-width: 1025px) {
+    .container {
+        padding: 30px; /* Default padding */
+        max-width: none; /* REMOVED max-width for larger screens */
+    }
+
+    h1 {
+        font-size: 2.5em; /* Default heading size */
+    }
+
+    .search-section input[type="text"] {
+         min-width: 250px; /* Default minimum width */
+    }
+
+     .product {
+        gap: 10px; /* Default gap */
+    }
+
+    .details-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Default grid columns */
+        gap: 50px; /* Default gap */
+    }
+
+     .product-details-modal {
+        max-width: 800px; /* Default modal max width */
+    }
+}

@@ -68,9 +68,9 @@ const configurations = {
         title: 'Brothers Home Equipment',
         jsonFile: 'items-BROTHERSHOME.json'
     },
-    '1516214': { 
-        title: '1516214 BC',
-        jsonFile: 'items-1516214.json'
+    'VICTORIA': { 
+        title: 'Victoria',
+        jsonFile: 'items-VICTORIA.json'
     },
     // ... more configurations
 };

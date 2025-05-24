@@ -94,8 +94,6 @@ const currentConfig = configurations[storeName] || {
 const jsonFileName = currentConfig.jsonFile || 'items-GREATDEALS.json'; // Default JSON if no parameter
 pageHeader.textContent = `Item Search - ${currentConfig.title}`;
 
-
-
 // --- Firebase Configuration (Removed and commented out) ---
 // const firebaseConfig = {
 //     apiKey: "YOUR_API_KEY", // Ensure this is your actual API Key

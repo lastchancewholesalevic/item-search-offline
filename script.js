@@ -8,7 +8,6 @@ const productList = document.getElementById('product-list');
 const productCountElement = document.getElementById('product-count'); // Get reference to the count element
 const loadingIndicatorElement = document.getElementById('loading-indicator'); // Get reference to the loading indicator
 
-
 // Get references to product details elements
 const productDetailsOverlay = document.getElementById('product-details-overlay');
 const productDetailsModal = productDetailsOverlay.querySelector('.product-details-modal');
@@ -24,7 +23,6 @@ const detailSellPrice = document.getElementById('detail-costco-price');
 const detailQTY = document.getElementById('detail-qty'); // Added QTY element
 const detailVendedor = document.getElementById('detail-vendedor'); // Added Vendedor element
 const detailComments = document.getElementById('detail-comments'); // Added Comments element
-
 
 // References for dynamically calculated prices
 const detailCategory10 = document.getElementById('detail-category-10');
@@ -74,7 +72,6 @@ const configurations = {
     },
     // ... more configurations
 };
-
 
 
 // --- NEW: Function to get URL parameters ---

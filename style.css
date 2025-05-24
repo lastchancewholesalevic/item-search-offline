@@ -12,15 +12,16 @@ body {
 }
 
 .container {
+
   width: 100%; /* Ensure it takes the full width of its parent (body) */
   /* REMOVED max-width here to allow full width by default */
-  margin: 20px auto; /* Center the container and add vertical margin */
-  padding: 30px; /* More padding inside the container */
+  margin: 0px auto; /* Center the container and add vertical margin */
+  padding: 0px; /* More padding inside the container */
   background-color: #fff; /* White background for the container */
   border: 1px solid #ddd; /* Lighter border */
   border-radius: 8px; /* More rounded corners */
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-  padding-bottom: 80px; /* Adjust based on the height of your pagination footer */
+  padding-bottom: 0px; /* Adjust based on the height of your pagination footer */
   box-sizing: border-box;
   position: relative; /* Needed for absolute positioning of potential future elements */
 }
@@ -132,9 +133,9 @@ h2 {
   border-radius: 4px;
   overflow: hidden;
   margin-top: 0;
-  max-height: 400px; /* Set a max height for the list */
+  max-height: auto; /* Set a max height for the list */
   overflow-y: auto; /* Add vertical scroll when content exceeds max-height */
-  margin-bottom: 20px; /* Add space below the list */
+  margin-bottom: 0px; /* Add space below the list */
 }
 
 /* Style for individual product items */

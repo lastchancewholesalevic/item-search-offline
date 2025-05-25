@@ -321,8 +321,10 @@ h2 {
   font-weight: bold;
   color: #c60c0c;
   flex-basis: 100%; /* Make header take full width */
-  margin-bottom: 5px; /* Space below header */
+  margin-bottom: 10px; /* Space below header */
+  text-align: center;
 }
+
 
 
 .detail-value {
@@ -476,10 +478,7 @@ h2 {
         text-align: left; /* Align values to the left when stacked */
     }
 
-    .detail-header {
-         margin-bottom: 0; /* Remove extra space below header when stacked */
-    }
-
+   
     #pagination-controls {
         padding: 10px; /* Adjust pagination padding */
         gap: 5px; /* Adjust gap */

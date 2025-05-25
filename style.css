@@ -57,7 +57,8 @@ h2 {
   border-radius: 4px;
   font-size: 1rem;
   box-sizing: border-box;
-  min-width: 150px; /* Ensure inputs have a minimum width */
+  min-width: 150px; 
+  max-width: 550px; 
 }
 
 .search-section button {

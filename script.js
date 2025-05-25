@@ -1,6 +1,5 @@
 // Get references to DOM elements
-const searchNameInput = document.getElementById('item-name'); // Input for name/description search
-const searchIdInput = document.getElementById('item-id'); // Input for ID search
+const itemSearch = document.getElementById('item-search'); // Input for ID search
 const searchBtn = document.getElementById('search-btn');
 const refreshBtn = document.getElementById('refresh-btn');
 
@@ -297,14 +296,13 @@ function hideProductDetails() {
 // Function to filter products based on search input
 
  async function searchProducts() {
-    const searchTerm = searchNameInput.value.trim().toLowerCase();
-    const searchIdTerm = searchIdInput.value.trim();
+    const searchValue = itemSearch.value.trim().toLowerCase();
 
     showLoadingIndicator(); // Show indicator and hide pagination
     hideProductDetails(); // Ensure modal is hidden when searching starts
 
     // If search terms are empty, just load the initial products (which will handle pagination)
-    if (searchTerm === '' && searchIdTerm === '') {
+    if (searchValue === '' ) {
         // Re-render the currentDisplayedProducts (which should be all products, already sorted by Description)
         currentDisplayedProducts = allProductsData; // Ensure we are working with the full dataset
         currentPage = 1; // Reset to first page for new search/clear
@@ -318,15 +316,10 @@ function hideProductDetails() {
       let matchingProducts = allProductsData.filter(product => {
          // Ensure product is an object and has properties before accessing them for safety
         const description = String(product && product.DESCRIPTION || '').toLowerCase();
-        const item = String(product && product.ITEM || '');
+        const item = String(product && product.ITEM || '').toLowerCase();
 
-        if (searchTerm !== '' && searchIdTerm !== '') {
-             return description.includes(searchTerm) && item.includes(searchIdTerm);
-        } else if (searchTerm !== '') {
-             return description.includes(searchTerm);
-        } else if (searchIdTerm !== '') {
-             // Filter by Item ID (case-insensitive check if needed, but exact match is often better for IDs)
-             return item.includes(searchIdTerm); // Use includes for partial matches
+        if (searchValue !== '') {
+             return description.includes(searchValue) || item.includes(searchValue);
         }
          return false;
       });
@@ -334,7 +327,7 @@ function hideProductDetails() {
       // --- Custom sorting for search results ---
       // Prioritize exact Item ID matches, then sort by Description
       // HIGHLIGHT START
-      if (searchIdTerm !== '') { // Apply this sorting only if an Item ID search term is present
+      if (searchValue !== '') { // Apply this sorting only if an Item ID search term is present
           matchingProducts.sort((a, b) => {
               const itemA = String(a.ITEM || '');
               const itemB = String(b.ITEM || '');
@@ -342,8 +335,8 @@ function hideProductDetails() {
               const descriptionB = String(b.DESCRIPTION || '').toLowerCase();
 
               // Check for exact match of the searchIdTerm
-              const aIsExactMatch = itemA === searchIdTerm;
-              const bIsExactMatch = itemB === searchIdTerm;
+              const aIsExactMatch = itemA === searchValue;
+              const bIsExactMatch = itemB === searchValue;
 
               if (aIsExactMatch && !bIsExactMatch) {
                   return -1; // 'a' comes first (exact match)
@@ -493,8 +486,7 @@ function renderPaginationControls() {
 
 // Function to clear search inputs and reload all products
 function clearElements() {
-    searchIdInput.value = ''; // Clear item ID input
-    searchNameInput.value = ''; // Clear name/description input
+    itemSearch.value = "";
     hideProductDetails(); // Ensure modal is hidden when clearing
     // Load all products again and reset pagination
     loadProducts();
@@ -510,18 +502,15 @@ searchBtn.addEventListener('click', searchProducts);
 refreshBtn.addEventListener('click', clearElements);
 
 // Add event listeners for 'Enter' key press on search inputs
-searchNameInput.addEventListener('keypress', (event) => {
-  if (event.key === 'Enter') {
-    searchProducts();
-  }
-});
 
-searchIdInput.addEventListener('keypress', (event) => {
+itemSearch.addEventListener('keypress', (event) => {
   if (event.key === 'Enter') {
     searchProducts();
     
   }
 });
+
+
 
 // Event listener for the close button on the details modal
 closeDetailsBtn.addEventListener('click', hideProductDetails);

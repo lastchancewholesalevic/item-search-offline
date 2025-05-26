@@ -1,7 +1,10 @@
 body {
+  border-radius: 10px;
   font-family: sans-serif; /* Nicer default font */
   line-height: 1.6;
-  background-color: #f4f4f4; /* Light background */
+  /* background-color: #f4f4f4; Light background */
+  background-color:  #667eea;
+  top: 0;
   margin: 0;
   padding: 0; /* Remove body padding as container will handle it */
   display: flex; /* Use flexbox for body to center container */
@@ -9,31 +12,54 @@ body {
   align-items: flex-start;
   min-height: 100vh; /* Ensure body takes at least full viewport height */
   box-sizing: border-box;
+ 
 }
 
 .container {
-
-  width: 100%; /* Ensure it takes the full width of its parent (body) */
-  /* REMOVED max-width here to allow full width by default */
-  margin: 0px auto; /* Center the container and add vertical margin */
-  padding: 0px; /* More padding inside the container */
-  background-color: #fff; /* White background for the container */
-  border: 1px solid #ddd; /* Lighter border */
-  border-radius: 8px; /* More rounded corners */
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-  padding-bottom: 0px; /* Adjust based on the height of your pagination footer */
+  width: 100%; 
+  /* padding: 5px;  */
+  background-color: #fff; 
+  border-right: 40px solid  #667eea;  
+  border-left: 40px solid  #667eea;  
+  border-top: 20px solid  #667eea; 
+  border-bottom: 50px solid  #667eea; 
+  border-radius: 20px; 
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+  padding-bottom: 70px; 
   box-sizing: border-box;
-  position: relative; /* Needed for absolute positioning of potential future elements */
+  position: relative; 
+   
 }
+
+.header {
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    /* padding: 5px; */
+    text-align: center;
+    color: white;
+    position: sticky; 
+    top: 0;          
+    overflow: hidden;
+    z-index: 10;    
+}
+
+.header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            animation: shimmer 3s infinite;
+        }
+
 
 h1 {
-  text-align: center;
-  color: #333;
   margin-top: 0;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
+  padding: 15px;
 }
-
-h2 {
+        h2 {
   color: #555;
   margin-top: 0;
   margin-bottom: 10px;
@@ -41,54 +67,68 @@ h2 {
   padding-bottom: 5px;
 }
 
-/* Styling for the Search Section */
-.search-section {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap; /* Allows items to wrap to the next line on smaller screens */
-  margin-bottom: 20px;
-  align-items: center; /* Vertically align items in the flex container */
-}
 
-.search-section input[type="text"] {
-  flex-grow: 1; /* Allows inputs to grow and take available space */
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-size: 1rem;
-  box-sizing: border-box;
-  min-width: 150px; 
-  max-width: 550px; 
-}
+        .search-section {
+            padding: 10px;
+            display: flex;
+            gap: 15px;
+            max-width: 600px;
+            margin: 0 auto;
+            align-items: center;
+            /* border-bottom: 1px solid #eee; */
+        }
 
-.search-section button {
-  padding: 10px 18px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 1rem;
-  transition: background-color 0.2s ease;
-  box-sizing: border-box;
-  flex-shrink: 0; /* Prevent buttons from shrinking */
-}
+        .search-input {
+            flex: 1;
+            padding: 15px 20px;
+            border: 2px solid #e0e7ff;
+            border-radius: 50px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            background: #f8fafc;
+            width: 450px;
+        }
 
-#search-btn {
-  background-color: #007bff;
-  color: white;
-}
+        .search-input:focus {
+            outline: none;
+            border-color: #4facfe;
+            box-shadow: 0 0 0 3px rgba(79, 172, 254, 0.1);
+            background: white;
+        }
 
-#search-btn:hover {
-  background-color: #0056b3;
-}
+        .btn {
+            padding: 15px 25px;
+            border: none;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
 
-#refresh-btn {
-  background-color: #6c757d;
-  color: white;
-}
+        .btn-primary {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+            box-shadow: 0 4px 15px rgba(79, 172, 254, 0.3);
+        }
 
-#refresh-btn:hover {
-  background-color: #5a6268;
-}
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(79, 172, 254, 0.4);
+        }
+
+        .btn-secondary {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            color: #374151;
+            box-shadow: 0 4px 15px rgba(168, 237, 234, 0.3);
+        }
+
+        .btn-secondary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(168, 237, 234, 0.4);
+        }
 
 /* Styling for the Add Product Section (can be hidden if needed) */
 .add-product-section {
@@ -98,6 +138,7 @@ h2 {
   margin-bottom: 20px;
   padding-top: 15px;
   border-top: 1px solid #eee;
+  
 }
 
 .add-product-section input[type="text"] {
@@ -129,8 +170,8 @@ h2 {
 /* Styling for the Product List */
 #product-list {
   list-style-type: none;
-  padding: 0;
-  border: 1px solid #ddd;
+  padding: 10px;
+  border: 0px solid #ddd;
   border-radius: 4px;
   overflow: hidden;
   margin-top: 0;
@@ -139,18 +180,19 @@ h2 {
   margin-bottom: 0px; /* Add space below the list */
 }
 
-/* Style for individual product items */
+
+/* Ensure the .product container allows for the right alignment */
 .product {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 12px 15px;
-  border-bottom: 1px solid #eee;
-  background-color: #fff;
-  flex-wrap: wrap; /* Allows items inside product list to wrap */
-  gap: 10px; /* Gap between items in the list */
-  cursor: pointer; /* Indicate clickable items */
-  transition: background-color 0.2s ease; /* Hover effect */
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* This ensures the last item (your price) goes to the far right */
+    padding: 12px 15px;
+    border-bottom: 1px solid #eee;
+    background-color: #fff;
+    flex-wrap: wrap;
+    gap: 10px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
 }
 
 .product:last-child {
@@ -168,12 +210,18 @@ h2 {
   flex-basis: auto;
 }
 
+
 .product-item-number {
-    font-weight: bold;
-    color: #007bff;
-    flex-shrink: 0;
-    margin-right: 10px; /* Add space after item number */
-} 
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 1rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-right: 10px
+        }
+
 
 .product-description {
   flex-grow: 1; /* Allow description to take up remaining space */
@@ -182,17 +230,18 @@ h2 {
 }
 
 .product-price,
-.product-great-deals-price { /* Include other numeric/short items */
+.product-great-deals-price- { /* Include other numeric/short items */
   font-weight: bold;
   color: #007bff;
   flex-shrink: 0;
    /* Use margin-left for spacing and alignment, flex-basis ensures they don't take unnecessary space */
-  margin-left: 10px;
+  margin-left: 20px;
 }
 
-.product-great-deals-price {
+.product-great-deals-price- {
     color: #28a745; /* Highlight great deal price */
-    margin-left: 10px; /* Space between prices */
+    margin-left: 20px; /* Space between prices */
+    padding-left: 20px;
 }
 
 .delete-btn {
@@ -252,86 +301,120 @@ h2 {
   align-items: center;
   z-index: 1000;
   backdrop-filter: blur(5px);
-  padding: 10px; /* Add some padding to the overlay */
+  padding: 0px; 
   box-sizing: border-box;
+  
 }
+
 
 .product-details-modal {
   background-color: #fff;
-  padding: 30px;
+  padding: 0px;
   border-radius: 8px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  max-width: 800px; /* Max width for the modal */
-  width: 100%; /* Make modal take full width on smaller screens */
+  max-width: 800px; 
+  width: 100%; 
   position: relative;
-  max-height: 95vh; /* Allow modal to take up more vertical space */
+  max-height: 95vh; 
   overflow-y: auto;
   box-sizing: border-box;
 }
 
+
 .product-details-modal h2 {
   margin-top: 0;
-  border-bottom: 2px solid #007bff;
+  padding: 10px;
+  /* border-bottom: 2px solid #007bff; */
   padding-bottom: 10px;
-  margin-bottom: 20px;
+  margin-bottom: 20px; 
+  background: linear-gradient(135deg, #4f46e5, #7c3aed);
+  color: white;
 }
 
 .product-details-modal .close-btn {
   position: absolute;
   top: 10px;
   right: 10px;
-  font-size: 1.5rem;
+  font-size: 2rem;
   background: none;
   border: none;
   cursor: pointer;
   color: #888;
-  z-index: 1010; /* Ensure close button is above content */
+  z-index: 1010; 
 }
+
 
 .product-details-modal .close-btn:hover {
   color: #555;
 }
 
-/* Updated grid layout for details - using grid for better control */
-.details-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive grid columns */
-  gap: 20px; /* Gap between grid items */
-}
+  .details-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1px;
+            /* padding: 15px; */
+            padding-left: 15px;
+            padding-bottom: 15px;
+            padding-right: 15px;
+        }
 
-.col-1, .col-2 {
-    /* Remove grid display here, let the details-grid handle the layout */
-    display: block; /* Ensure they behave as blocks */
-}
+         .details-grid-header {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1px;
+            padding-left: 15px;
+        }
+
+
+
+ .col-1, .col-2 {
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid #e2e8f0;
+            /* display: block; */
+        }
+
+    
+
 
 .detail-column {
-    display: flex; /* Use flexbox for label and value within a detail row */
-    justify-content: space-between; /* Space out label and value */
-    gap: 10px; /* Gap between label and value */
-    flex-wrap: wrap; /* Allow label and value to wrap */
+    display: flex; 
+    justify-content: space-between; 
+    gap: 0px; 
+    flex-wrap: wrap; 
 }
 
 
 .detail-label {
   font-weight: bold;
-  color: #333;
-  flex-shrink: 0; /* Prevent label from shrinking */
+  color: #64748b;
+  flex-shrink: 0; 
 }
 
 .detail-header {
   font-weight: bold;
-  color: #c60c0c;
-  flex-basis: 100%; /* Make header take full width */
-  margin-bottom: 10px; /* Space below header */
+  /* color: #c60c0c; */
+  flex-basis: 100%; 
+  margin-bottom: 10px; 
+  text-align: left;
+}
+
+.detail-header-center {
+  font-weight: bold;
+  /* color: #c60c0c; */
+  flex-basis: 100%; 
+  margin-bottom: 10px; 
   text-align: center;
 }
 
 
 
+
 .detail-value {
   color: #555;
-  text-align: right; /* Align value to the right */
-  flex-grow: 1; /* Allow value to grow and take space */
+  text-align: right; 
+  flex-grow: 1; 
   word-break: break-word;
 }
 
@@ -341,7 +424,7 @@ h2 {
 }
 
 .detail-column-full .detail-value {
-    text-align: left; /* Align full-width values to the left */
+    text-align: left; 
 }
 
 
@@ -362,10 +445,7 @@ h2 {
   color: #666;
 }
 
-/* Optional: Hide the add product section if not needed on this search page */
-/* .add-product-section {
-  display: none;
-} */
+
 
 /* --- Pagination Styles --- */
 #pagination-controls {
@@ -383,16 +463,19 @@ h2 {
     gap: 10px;
     box-sizing: border-box;
     flex-wrap: wrap; /* Allow controls to wrap on smaller screens */
+    height: 70px
 }
 
 .pagination-controls button {
-    padding: 8px 15px;
-    border: 1px solid #007bff;
-    border-radius: 4px;
-    background-color: #fff;
-    color: #007bff;
-    cursor: pointer;
-    transition: background-color 0.2s ease, opacity 0.2s ease;
+  padding: 12px 20px;
+  border: 2px solid #e2e8f0;
+  background: white;
+  border-radius: 10px;
+  color: #64748b;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
 }
 
 .pagination-controls button:hover:not(:disabled) {
@@ -411,24 +494,122 @@ h2 {
 }
 
 
+
+/* Ensure the .product container allows for the right alignment */
+.item-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* This ensures the last item (your price) goes to the far right */
+    padding: 15px;
+    border-bottom: 1px solid #eee;
+    background-color: #fff;
+    flex-wrap: wrap;
+    gap: 0px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 15px;
+    margin-bottom: 5px;
+    margin-left: 15px;
+    margin-right: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    border: 1px solid #e2e8f0;
+}
+
+   /* .item-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        } */
+
+        .item-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
+        }
+
+
+  
+ .price-tag {
+            padding: 8px 16px;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .regular-price {
+            background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+            color: #dc2626;
+        }
+
+        .deal-price {
+            background: linear-gradient(135deg, #dcfce7 0%, #bbf7d0 100%);
+            color: #16a34a;
+            position: relative;
+        }
+
+
+
+ .product-great-deals-price {
+    background: linear-gradient(135deg, #dcfce7 0%, #bbf7d0 100%);
+    color: #16a34a;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 1rem;
+    font-weight: 600;
+    display: inline-block; /* Keep inline-block if you want it to shrink-wrap its content */
+    margin-right: 0; /* No right margin needed if it's the last element and pushed right by flexbox */
+    margin-left: auto; /* This is the key: pushes the element to the far right within a flex container */
+    /* text-align: right; is commented out, which is good. */
+    /* justify-content: right; is incorrect for inline-block and should be removed. */
+}
+
+
 /* --- Media Queries for Responsiveness --- */
 
 /* Mobile devices (portrait and landscape) */
 @media (max-width: 767px) {
-    .container {
-        padding: 15px; /* Reduce container padding on smaller screens */
-        margin: 10px auto; /* Adjust margin */
-    }
+     .container {
+        position: relative; 
+        border: 0px ; 
+    } 
 
-    h1 {
-        font-size: 1.8em; /* Adjust heading size */
+    /* .container {
+  background-color: #fff; 
+  border-right: 0px solid  #667eea;  
+  border-left: 0px solid  #667eea;  
+  border-top: 0px solid  #667eea; 
+  border-bottom: 0px solid  #667eea; 
+  padding-bottom: 70px; 
+  box-sizing: border-box;
+  
+   
+} */
+
+     /* h1 {
+        font-size: 1.8em; 
         margin-bottom: 15px;
-    }
+    }  */
 
     .search-section {
-        flex-direction: column; /* Stack search inputs and buttons vertically */
-        gap: 10px;
+        flex-direction: column;
+        padding: 15px 15px 5px;
+        gap: 10px; /* Ensure consistent gap */
     }
+
+     .search-input {
+        width: 100%;
+        max-width: none;
+        margin-bottom: 0; /* No bottom margin, gap handles spacing */
+    }
+
+    .search-wrapper {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
 
     .search-section input[type="text"],
     .search-section button {
@@ -454,7 +635,7 @@ h2 {
     }
 
     .product-price,
-    .product-great-deals-price {
+    .product-great-deals-price- {
          margin-top: 4px; /* Add space above prices */
          margin-left: 0; /* Remove left margin */
     }
@@ -467,12 +648,20 @@ h2 {
 
     .details-grid {
         grid-template-columns: 1fr; /* Stack detail columns in the modal */
-        gap: 15px; /* Adjust gap */
+        gap: 0px; /* Adjust gap */
     }
+
+     .details-grid-header {
+            
+            grid-template-columns: 1fr;
+            gap: 0px;
+          
+        }
+
 
     .detail-column {
         flex-direction: column; /* Stack label and value within detail rows */
-        gap: 5px; /* Adjust gap */
+        gap: 0px; /* Adjust gap */
     }
 
     .detail-value {
@@ -481,9 +670,10 @@ h2 {
 
    
     #pagination-controls {
-        padding: 10px; /* Adjust pagination padding */
-        gap: 5px; /* Adjust gap */
-        justify-content: space-between; /* Space out controls */
+       flex-direction: column;
+        padding: 0px;
+        gap: 0px;
+        justify-content: space-between; 
     }
 
      #page-info {
@@ -491,20 +681,22 @@ h2 {
         text-align: center; /* Center page info */
         margin-top: 5px; /* Add some space above page info */
     }
+
+   
 }
 
 /* Tablet devices */
 @media (min-width: 768px) and (max-width: 1024px) {
     .container {
-        padding: 25px; /* Adjust container padding */
+        padding: 0px; 
     }
 
     h1 {
-        font-size: 2em; /* Adjust heading size */
+        font-size: 2em; 
     }
 
     .search-section input[type="text"] {
-        min-width: 200px; /* Adjust minimum width for inputs */
+        min-width: 400px; /* Adjust minimum width for inputs */
     }
 
     .product {
@@ -513,7 +705,7 @@ h2 {
 
     .details-grid {
         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Adjust grid columns for tablets */
-        gap: 25px; /* Adjust gap */
+        gap: 0px; /* Adjust gap */
     }
 
     .product-details-modal {
@@ -524,8 +716,8 @@ h2 {
 /* Desktop devices and larger */
 @media (min-width: 1025px) {
     .container {
-        padding: 30px; /* Default padding */
-        max-width: none; /* REMOVED max-width for larger screens */
+        padding: 0px; 
+        max-width: none; 
     }
 
     h1 {
@@ -533,7 +725,7 @@ h2 {
     }
 
     .search-section input[type="text"] {
-         min-width: 250px; /* Default minimum width */
+         min-width: 200px; /* Default minimum width */
     }
 
      .product {
@@ -542,10 +734,11 @@ h2 {
 
     .details-grid {
         grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Default grid columns */
-        gap: 50px; /* Default gap */
+        gap: 20px; /* Default gap */
     }
 
      .product-details-modal {
         max-width: 800px; /* Default modal max width */
     }
 }
+

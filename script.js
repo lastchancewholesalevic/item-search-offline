@@ -88,7 +88,7 @@ const currentConfig = configurations[storeName] || {
      jsonFile: 'items-GREATDEALS.json'
 };
 const jsonFileName = currentConfig.jsonFile || 'items-GREATDEALS.json'; // Default JSON if no parameter
-pageHeader.textContent = `Item Search - ${currentConfig.title}`;
+pageHeader.textContent = `🛍️ Item Search - ${currentConfig.title}`;
 
 // --- Firebase Configuration (Removed and commented out) ---
 // const firebaseConfig = {
@@ -160,7 +160,7 @@ function renderProducts(product) {
   
   paginatedProducts.forEach(product => {
     const productItem = document.createElement('li');
-    productItem.className = 'product';
+    productItem.className = 'item-card';
     productItem.dataset.productId = product.id; // Store the product ID
 
     // Add click listener to the list item
@@ -170,7 +170,7 @@ function renderProducts(product) {
     if (product.ITEM !== undefined) {
         const productItemNumberElement = document.createElement('span');
         productItemNumberElement.classList.add('product-item-number');
-        productItemNumberElement.textContent = `Item #: ${product.ITEM}`;
+        productItemNumberElement.textContent = `#${product.ITEM}`;
         productItem.appendChild(productItemNumberElement);
     }
 
@@ -189,7 +189,7 @@ function renderProducts(product) {
             // Ensure it's a number before toFixed
             const sellPrice = typeof product["SELL PRICE"] === 'number' ? product["SELL PRICE"] : parseFloat(product["SELL PRICE"]);
             if (!isNaN(sellPrice)) {
-                 productSellPriceElement.textContent = `Price: $${sellPrice.toFixed(2)}`; // Format price
+                 productSellPriceElement.textContent = `Costco Price (MSRP): $${sellPrice.toFixed(2)}`; // Format price
                  productItem.appendChild(productSellPriceElement);
             }
         }
@@ -202,7 +202,7 @@ function renderProducts(product) {
              // Ensure it's a number before toFixed
             const greatDealsPrice = typeof product["GREAT DEALS PRICE COST"] === 'number' ? product["GREAT DEALS PRICE COST"] : parseFloat(product["GREAT DEALS PRICE COST"]);
             if (!isNaN(greatDealsPrice)) {
-                productGreatDealsPriceElement.textContent = `Great Deal: $${greatDealsPrice.toFixed(2)}`; // Format price
+                productGreatDealsPriceElement.textContent = `Cost (Default Cost): $${greatDealsPrice.toFixed(2)}`; // Format price
                 productItem.appendChild(productGreatDealsPriceElement);
             }
         }
@@ -369,9 +369,12 @@ function hideProductDetails() {
       productList.innerHTML = '<p>Error searching for products.</p>';
       updateProductCountDisplay(0, 0);
       renderPaginationControls(); // Render controls (will be disabled/hidden) even on error
+      // searchBtn.innerHTML = 'Search';
     } finally {
         hideLoadingIndicator(); // Hide loading indicator
+        
     }
+   
   }
 
 
@@ -495,8 +498,6 @@ function clearElements() {
 
 // --- Event Listeners and Initialization ---
 
-// Event listener for the "Search" button
-searchBtn.addEventListener('click', searchProducts);
 
 // Event listener for the "Refresh" button
 refreshBtn.addEventListener('click', clearElements);
@@ -527,9 +528,36 @@ productDetailsOverlay.addEventListener('click', (event) => {
 prevPageBtn.addEventListener('click', () => changePage('prev'));
 nextPageBtn.addEventListener('click', () => changePage('next'));
 
+// Add hover effect to item cards
+document.querySelectorAll('.item-card').forEach(card => {
+    card.addEventListener('mouseenter', function() {
+        this.style.transform = 'translateY(-8px) scale(1.02)';
+    });
+            
+    card.addEventListener('mouseleave', function() {
+          this.style.transform = 'translateY(0) scale(1)';
+    });
+});
+
+ // Add some interactive functionality
+//  searchBtn.addEventListener('click', function() {
+//   this.innerHTML = '<span class="loading"></span> Searching...';
+//   searchProducts();
+
+//     // Revert button text after a delay
+//     setTimeout(() => {
+//       this.innerHTML = 'Search';
+//     }, 1000);
+// });
+
+  // Event listener for the "Search" button
+  searchBtn.addEventListener('click', searchProducts);
+
 
 // CRUCIAL FIX - Ensure the modal is hidden immediately on script load
 // Also, call loadProducts to populate the initial list
 hideProductDetails();
 loadProducts();
+
+
 

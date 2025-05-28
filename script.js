@@ -539,25 +539,22 @@ document.querySelectorAll('.item-card').forEach(card => {
     });
 });
 
- // Add some interactive functionality
-//  searchBtn.addEventListener('click', function() {
-//   this.innerHTML = '<span class="loading"></span> Searching...';
-//   searchProducts();
 
-//     // Revert button text after a delay
-//     setTimeout(() => {
-//       this.innerHTML = 'Search';
-//     }, 1000);
-// });
+// Event listener for the "Search" button
+searchBtn.addEventListener('click', searchProducts);
 
-  // Event listener for the "Search" button
-  searchBtn.addEventListener('click', searchProducts);
+document.addEventListener('DOMContentLoaded', function() {
+const fourHoursInMilliseconds = 4 * 60 * 60 * 1000; // 4 hours * 60 min * 60 sec * 1000 ms
+setInterval(function() {
+        location.reload();
+  }, fourHoursInMilliseconds);
+
+  hideProductDetails();
+  loadProducts();
+
+});
 
 
-// CRUCIAL FIX - Ensure the modal is hidden immediately on script load
-// Also, call loadProducts to populate the initial list
-hideProductDetails();
-loadProducts();
 
 
 

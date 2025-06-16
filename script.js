@@ -69,6 +69,10 @@ const configurations = {
         title: 'Victoria',
         jsonFile: 'items-VICTORIA.json'
     },
+    'LASTCHANCE_VICTORIA': { 
+        title: 'Last Chance Wholesale - Victoria',
+        jsonFile: 'items-LASTCHANCE_VICTORIA.json'
+    },
     // ... more configurations
 };
 

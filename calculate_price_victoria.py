@@ -43,8 +43,8 @@ for product in yvr_data:
 
     victoria_data.append(product_new)
 
-print(len(victoria_data))
+# print(len(victoria_data))
 
-# # Save to b.json
-# with open('./items-LASTCHANCE_VICTORIA.json', 'w') as f:
-#     json.dump(victoria_data, f, indent=2, ensure_ascii=False)
+# Save to b.json
+with open('./items-LASTCHANCE_VICTORIA.json', 'w') as f:
+    json.dump(victoria_data, f, indent=2, ensure_ascii=False)

@@ -1,7 +1,7 @@
 import json
 
 # Load original data
-with open('./items-LASTCHANCE.json', 'r') as f:
+with open('./items-LASTCHANCE.json','r', encoding='utf-8') as f:
     yvr_data = json.load(f)
 
 # The target keys to apply markup
@@ -43,7 +43,8 @@ for product in yvr_data:
 
     victoria_data.append(product_new)
 
-# print(len(victoria_data))
+print("Victoria update completed!")
+print(len(victoria_data))
 
 # Save to b.json
 with open('./items-LASTCHANCE_VICTORIA.json', 'w') as f:
